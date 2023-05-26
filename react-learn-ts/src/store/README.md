@@ -1,0 +1,3 @@
+# STORE
+
+Redux Storage Section

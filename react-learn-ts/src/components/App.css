@@ -1,0 +1,15 @@
+.component-spacing {
+    margin-top: 10%;
+  } 
+  
+  .component-container {
+  display: flex;
+  justify-content: center;
+  max-width: 600px; 
+  margin: 0 auto;
+  margin-top: 3%;
+  background: #fafafa;
+  padding: 3%;
+  border: 1px solid #e1e1e1;
+  border-radius: 30px;
+} 

@@ -1,0 +1,27 @@
+.timeInput {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .timeInput label {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .timeInput input {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    width: 3rem;
+    text-align: center;
+  }
+  
+  .timeInput input:disabled {
+    background-color: #eee;
+    border-color: #eee;
+    color: #666;
+    cursor: not-allowed;
+  }
+  
