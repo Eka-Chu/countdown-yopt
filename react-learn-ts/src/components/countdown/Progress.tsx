@@ -6,7 +6,7 @@ type ProgressProps = {
 };
 
 const Progress: React.FC<ProgressProps> = ({ percent }) => {
-  const roundedPercent = parseInt(percent.toFixed(0), 10);
+  const roundedPercent = Math.round(percent);
 
   return <AntdProgress percent={roundedPercent} />;
 };
