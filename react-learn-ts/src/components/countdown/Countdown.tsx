@@ -7,6 +7,7 @@ import { Typography } from '@mui/material';
 import { StyledTitle } from './Countdown.styles';
 import { styled, Box } from '@mui/system';
 
+// Стилизованный компонент ButtonGroup с использованием MUI
 const StyledButtonGroup = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(2),
   '& > *': {
@@ -15,24 +16,28 @@ const StyledButtonGroup = styled(Box)(({ theme }) => ({
 }));
 
 const Countdown = () => {
-  const [time, setTime] = useState({ duration: 0, progress: 0 });
-  const [isRunning, setIsRunning] = useState(false);
+  const [time, setTime] = useState({ duration: 0, progress: 0 }); // Состояние времени
+  const [isRunning, setIsRunning] = useState(false); // Состояние запущен/остановлен
 
-  let interval: NodeJS.Timeout;
+  let interval: NodeJS.Timeout; // Интервал для обновления времени
 
+  // Обработчик изменения ползунка
   const handleSliderChange = (value: number) => {
     setTime({ duration: value * 60 * 1000, progress: 0 });
   };
 
+  // Обработчик изменения значений в полях ввода
   const handleInputChange = (minutes: number, seconds: number) => {
     const totalMilliseconds = (minutes * 60 + seconds) * 1000;
     setTime({ duration: totalMilliseconds, progress: 0 });
   };
 
+  // Обработчик клика на кнопку "Старт/Стоп"
   const handleStartStopClick = () => {
     setIsRunning(!isRunning);
   };
 
+  // Обработчик клика на кнопку "Сброс"
   const handleResetClick = () => {
     setIsRunning(false);
     setTime({ duration: 0, progress: 0 });
@@ -40,6 +45,7 @@ const Countdown = () => {
   };
 
   useEffect(() => {
+    // Функция, выполняющаяся каждую секунду
     const tick = () => {
       setTime((prevTime) => {
         const newTime = prevTime.duration - 1000;
@@ -59,12 +65,12 @@ const Countdown = () => {
     };
 
     if (isRunning && time.duration > 0) {
-      interval = setInterval(tick, 1000);
+      interval = setInterval(tick, 1000); // Запуск интервала, если таймер запущен и длительность больше 0
     } else {
-      clearInterval(interval);
+      clearInterval(interval); // Остановка интервала, если таймер не запущен или длительность равна 0
     }
 
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); // Очистка интервала при размонтировании (удалении из DOM-дерева) компонента
   }, [isRunning, time.duration]);
 
   const minutes = Math.floor(time.duration / 60000);

@@ -10,19 +10,19 @@ const StyledButtonGroup = styled(Box)(({ theme }) => ({
 }));
 
 interface ButtonGroupProps {
-  isRunning: boolean;
-  handleStartStopClick: () => void;
-  handleResetClick: () => void;
+  isRunning: boolean; // Флаг, указывающий на состояние выполнения (запущено/не запущено)
+  handleStartStopClick: () => void; // Обработчик клика на кнопку "Запуск/Пауза"
+  handleResetClick: () => void; // Обработчик клика на кнопку "Сброс"
 }
 
 const ButtonGroup: React.FC<ButtonGroupProps> = ({ isRunning, handleStartStopClick, handleResetClick }) => {
   return (
     <StyledButtonGroup>
       <Button variant="contained" onClick={handleStartStopClick}>
-        {isRunning ? 'Пауза' : 'Запуск'}
+        {isRunning ? 'Пауза' : 'Запуск'} {/* Текст на кнопке зависит от значения флага isRunning */}
       </Button>
       <Button variant="contained" onClick={handleResetClick}>
-        Сброс
+        Сброс {/* Текст на кнопке "Сброс" */}
       </Button>
     </StyledButtonGroup>
   );
